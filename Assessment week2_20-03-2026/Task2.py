@@ -13,24 +13,22 @@ opts.add_experimental_option('detach',True)
 
 driver = webdriver.Chrome(options=opts)
 
-# Open signup page `https://automationexercise.com/signup`
-driver.get('https://automationexercise.com/signup')
+driver.get('https://automationexercise.com')
 driver.maximize_window()
 
 wait = WebDriverWait(driver,10)
 
+driver.find_element(By.XPATH,'//a[contains(text()," Signup / Login")]').click()
+
 # Enter name & email
 name = wait.until(EC.visibility_of_element_located((By.XPATH,'//input[@name="name"]')))
-name.send_keys('abc',Keys.ENTER)
+name.send_keys('abc')
 
 email = wait.until(EC.visibility_of_element_located((By.XPATH,'(//input[@name="email"])[2]')))
-email.send_keys('abcdefgdknelknlen@gmail.com',Keys.ENTER)
-
+email.send_keys('abcdefgdk15nknlen@gmail.com')
 
 btn = wait.until(EC.element_to_be_clickable((By.XPATH,'//button[text()="Signup"]')))
 btn.click()
-wait.until(EC.visibility_of_element_located((By.ID,'dismiss-button'))).click()
-# btn.click()
 # Select Title (Mr/Mrs) → Radio button
 
 wait.until(EC.visibility_of_element_located((By.XPATH,'//input[@type="radio"]'))).click()
